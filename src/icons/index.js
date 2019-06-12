@@ -2,5 +2,6 @@ const Icons = `<svg id="GuidedTourIconSet" xmlns="http://www.w3.org/2000/svg" xm
 <symbol id="tour-icon-close" viewBox="0 0 20 20"><path d="M16,16 L4,4" fill="none" stroke="currentColor" stroke-width="1"></path><path d="M16,4 L4,16" fill="none" stroke="currentColor" stroke-width="1"></path></symbol>
 <symbol id="tour-icon-next" viewBox="0 0 20 20"><polyline points="7 4 13 10 7 16" fill="none" stroke="currentColor" stroke-width="1"></polyline></symbol>
 <symbol id="tour-icon-complete" viewBox="0 0 20 20"><polyline points="4,10 8,15 17,4" fill="none" stroke="currentColor" stroke-width="1"></polyline></symbol>
+<symbol id="tour-icon-hand" viewBox="-2 -2 24 24"><g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-linecap="round"  stroke-width="1"><path class="t-i-h-c1" d="M11.2 16L6.7 8.2C6.1 7 8 6 8.6 7l3.4 6-1.5-2.7c-.6-1 1.2-2.2 1.9-1l1.4 2.3-1-1.6C12.2 9 14 8 14.7 9.1l.8 1.3-.3-.5c-.6-1 .9-2 1.5-.8l1.4 2.4c1 1.9 1.8 4 0 5l-3 1.8c-1.2.6-2.4.4-3.7-.4-1.3-.7-4-4.2-2.1-5.3z"/><path class="t-i-h-c2" d="M5.7 13.1l-.3 1.3M9.9 2.5l.4-1.3M2 6.6L.7 6.2m1.9 4.3l-1.2.8m3.3-8.5L4 1.6m8.4 3.3l1.2-.7m-6.4 8a4.6 4.6 0 0 1-1.1-.3m-1.5-1c-.4-.2-.6-.6-.9-1m-.5-1.3v-2M4 5c.3-.5.8-1 1.4-1.3m1-.4C7 3 7.6 3 8.3 3m1.5.6c.5.2.9.5 1.2.9m.6.8c.3.5.4 1 .5 1.7m-5.4 3.2A2.9 2.9 0 0 1 5.2 9a2.8 2.8 0 1 1 5.3-1.6"/></g></symbol>
 </svg>`;
 export default Icons;
