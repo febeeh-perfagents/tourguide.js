@@ -1,5 +1,20 @@
 import u from "umbrellajs";
 
+export function whenElement(selector, interval = 500, retries = 99) {
+  return new Promise((resolve, reject) => {
+    let retry = 0;
+    const wait = () => {
+      retry++;
+      if (retry > retries) reject();
+      else {
+        const el = u(selector);
+        if (el.length) resolve(el);
+        else setTimeout(wait, interval);
+      }
+    }
+  });
+};
+
 export function clamp(number, min, max) {
   min = isNaN(min) ? number : min;
   max = isNaN(max) ? number : max;
