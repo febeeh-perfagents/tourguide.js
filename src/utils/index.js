@@ -11,9 +11,10 @@ export function whenElement(selector, interval = 500, retries = 99) {
         if (el.length) resolve(el);
         else setTimeout(wait, interval);
       }
-    }
+    };
+    wait();
   });
-};
+}
 
 export function clamp(number, min, max) {
   min = isNaN(min) ? number : min;
