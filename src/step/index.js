@@ -76,6 +76,7 @@ export default class Step {
     this.title = data.title;
     this.content = data.content;
     this.actiontarget = data.actiontarget;
+    this.steps = null;
     this.image = data.image;
     if (data.image &&
       context.options.preloadimages &&
