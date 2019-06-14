@@ -9,7 +9,7 @@ var u=function(t,e){return this instanceof u?t instanceof u?t:("string"==typeof 
 });
 var umbrella_min_1 = umbrella_min.u;
 
-var Icons = "<svg id=\"GuidedTourIconSet\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n<symbol id=\"tour-icon-close\" viewBox=\"0 0 20 20\"><path d=\"M16,16 L4,4\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"></path><path d=\"M16,4 L4,16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"></path></symbol>\n<symbol id=\"tour-icon-next\" viewBox=\"0 0 20 20\"><polyline points=\"7 4 13 10 7 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"></polyline></symbol>\n<symbol id=\"tour-icon-complete\" viewBox=\"0 0 20 20\"><polyline points=\"4,10 8,15 17,4\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"></polyline></symbol>\n</svg>";
+var Icons = "<svg id=\"GuidedTourIconSet\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n<symbol id=\"tour-icon-close\" viewBox=\"0 0 20 20\"><path d=\"M16,16 L4,4\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"></path><path d=\"M16,4 L4,16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"></path></symbol>\n<symbol id=\"tour-icon-next\" viewBox=\"0 0 20 20\"><polyline points=\"7 4 13 10 7 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"></polyline></symbol>\n<symbol id=\"tour-icon-complete\" viewBox=\"0 0 20 20\"><polyline points=\"4,10 8,15 17,4\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1\"></polyline></symbol>\n<symbol id=\"tour-icon-hand\" viewBox=\"0 0 20 20\"><g fill=\"none\" stroke=\"currentColor\" stroke-linejoin=\"round\" stroke-linecap=\"round\"  stroke-width=\"1\"><path class=\"t-i-h-c1\" d=\"M11.2 16L6.7 8.2C6.1 7 8 6 8.6 7l3.4 6-1.5-2.7c-.6-1 1.2-2.2 1.9-1l1.4 2.3-1-1.6C12.2 9 14 8 14.7 9.1l.8 1.3-.3-.5c-.6-1 .9-2 1.5-.8l1.4 2.4c1 1.9 1.8 4 0 5l-3 1.8c-1.2.6-2.4.4-3.7-.4-1.3-.7-4-4.2-2.1-5.3z\"/><path class=\"t-i-h-c2\" d=\"M5.7 13.1l-.3 1.3M9.9 2.5l.4-1.3M2 6.6L.7 6.2m1.9 4.3l-1.2.8m3.3-8.5L4 1.6m8.4 3.3l1.2-.7m-6.4 8a4.6 4.6 0 0 1-1.1-.3m-1.5-1c-.4-.2-.6-.6-.9-1m-.5-1.3v-2M4 5c.3-.5.8-1 1.4-1.3m1-.4C7 3 7.6 3 8.3 3m1.5.6c.5.2.9.5 1.2.9m.6.8c.3.5.4 1 .5 1.7m-5.4 3.2A2.9 2.9 0 0 1 5.2 9a2.8 2.8 0 1 1 5.3-1.6\"/></g></symbol>\n</svg>";
 
 var COMPLETE = 'complete',
     CANCELED = 'canceled';
@@ -310,6 +310,65 @@ function getViewportRect() {
   };
 }
 
+var Image = function Image(_ref) {
+    var image = _ref.image;
+    return umbrella_min("<div role=\"figure\" class=\"guided-tour-step-image\">\n        " + (image ? "<img src=\"" + image + "\" />" : "") + "\n    </div>");
+};
+
+var Title = function Title(_ref) {
+    var title = _ref.title;
+    return title ? umbrella_min("<div role=\"heading\" class=\"guided-tour-step-title\">\n        " + title + "\n    </div>") : "";
+};
+
+var Content = function Content(_ref) {
+    var content = _ref.content;
+    return content ? umbrella_min("<div class=\"guided-tour-step-content\">\n        " + content + "\n    </div>") : "";
+};
+
+var Icon = function Icon(_ref) {
+    var _ref$width = _ref.width,
+        width = _ref$width === undefined ? 32 : _ref$width,
+        _ref$height = _ref.height,
+        height = _ref$height === undefined ? 32 : _ref$height,
+        name = _ref.name,
+        _ref$className = _ref.className,
+        className = _ref$className === undefined ? "" : _ref$className,
+        _ref$viewBox = _ref.viewBox,
+        viewBox = _ref$viewBox === undefined ? "0 0 20 20" : _ref$viewBox;
+    return "<svg class=\"guided-tour-icon " + className + "\" viewBox=\"" + viewBox + "\" width=\"" + width + "\" height=\"" + height + "\">\n        <use xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"#tour-icon-" + name + "\"></use>\n    </svg>";
+};
+
+var Footer = function Footer(_ref) {
+    var first = _ref.first,
+        last = _ref.last,
+        context = _ref.context,
+        index = _ref.index;
+    var buttons = context.options.buttons;
+
+    return umbrella_min("<div class=\"guided-tour-step-footer\">\n        " + (buttons.close ? "<span role=\"button\" class=\"guided-tour-step-button guided-tour-step-button-close\" title=\"End tour\">\n            " + Icon({ width: 16, height: 16, name: "close" }) + "\n        </span>" : "") + "\n        " + (buttons.previous && !first ? "<span role=\"button\" class=\"guided-tour-step-button guided-tour-step-button-previous\" title=\"Previous step\">\n            " + Icon({ name: "next", width: "20", height: "20" }) + "\n        </span>" : "") + "\n        " + (buttons.next && (last ? "<span role=\"button\" class=\"guided-tour-step-button guided-tour-step-button-complete\" title=\"Complete tour\">\n            " + Icon({ name: "complete" }) + "\n        </span>" : "<span role=\"button\" class=\"guided-tour-step-button guided-tour-step-button-next\" title=\"Next step\">\n            " + Icon({ name: "next" }) + "\n        </span>")) + "\n        " + (buttons.bullets && context._steps.length > 1 ? "<div class=\"guided-tour-step-footer-bullets\">\n                <ul>" + context._steps.map(function (step, i) {
+        return "<li  title=\"Go to step " + (i + 1) + "\" data-index=\"" + i + "\" class=\"" + (step.index < index ? "complete" : step.index == index ? "current" : "") + "\"></li>";
+    }).join("") + "\n                </ul>\n        </div>" : "") + "\n    </div>");
+};
+
+var Arrow = function Arrow() {
+    return umbrella_min("<div aria-hidden=\"true\" class=\"guided-tour-arrow\"></div>");
+};
+
+var Container = function Container(_ref) {
+    var first = _ref.first,
+        last = _ref.last;
+    return umbrella_min("<div role=\"dialog\" class=\"guided-tour-step" + (first ? " guided-tour-step-first" : "") + (last ? " guided-tour-step-last" : "") + "\"></div>");
+};
+
+var Highlight = function Highlight(_ref) {
+    var actiontarget = _ref.actiontarget;
+    return umbrella_min("<div class=\"guided-tour-step-highlight " + (actiontarget ? "guided-tour-step-highlight-active" : "") + "\">\n        " + (actiontarget ? Icon({ name: "hand", className: "guided-tour-step-button-action" }) : "") + "\n    </div>");
+};
+
+var Tooltip = function Tooltip() {
+    return umbrella_min("<div role=\"tooltip\" class=\"guided-tour-step-tooltip\"></div>");
+};
+
 // data-step="title: Step1; content: .../<>"
 
 var Step = function () {
@@ -319,24 +378,23 @@ var Step = function () {
       var _this = this;
 
       if (!this.container) {
-        var _image = umbrella_min("<div role=\"figure\" class=\"guided-tour-step-image\">" + (this.image ? "<img src=\"" + this.image + "\" />" : "") + "</div>");
-        var _title = umbrella_min("<div role=\"heading\" class=\"guided-tour-step-title\">" + this.title + "</div>");
-        var content = umbrella_min("<div class=\"guided-tour-step-content\">" + this.content + "</div>");
-        var footer = umbrella_min("<div class=\"guided-tour-step-footer\">\n                <span role=\"button\" class=\"guided-tour-step-button guided-tour-step-button-close\" title=\"End tour\">\n                    <svg class=\"guided-tour-icon\" viewBox=\"0 0 20 20\" width=\"16\" height=\"16\"><use xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"#tour-icon-close\"></use></svg>\n                </span>\n                " + (this.last ? "<span role=\"button\" class=\"guided-tour-step-button guided-tour-step-button-complete\" title=\"Complete tour\">\n                        <svg class=\"guided-tour-icon\" viewBox=\"0 0 20 20\" width=\"32\" height=\"32\"><use xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"#tour-icon-complete\"></use></svg>\n                    </span>" : "<span role=\"button\" class=\"guided-tour-step-button guided-tour-step-button-next\" title=\"Next step\">\n                        <svg class=\"guided-tour-icon\" viewBox=\"0 0 20 20\" width=\"32\" height=\"32\"><use xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"#tour-icon-next\"></use></svg>\n                    </span>") + "\n                " + (this.context._steps.length > 1 ? "<div class=\"guided-tour-step-footer-bullets\">\n                    <ul>" + this.context._steps.map(function (step, i) {
-          return "<li  title=\"Go to step " + (i + 1) + "\" data-index=\"" + i + "\" class=\"" + (step.index < _this.index ? "complete" : step.index == _this.index ? "current" : "") + "\"></li>";
-        }).join("") + "</ul>\n                </div>" : "") + "\n            </div>");
+        var _image = Image(this);
+        var _title = Title(this);
+        var content = Content(this);
+        var footer = Footer(this);
+        var highlight = this.highlight = Highlight(this);
+        var tooltip = this.tooltip = Tooltip();
+        var arrow = this.arrow = Arrow();
+        this.container = Container(this);
+        footer.find(".guided-tour-step-button-previous").on("click", this.context.previous);
         footer.find(".guided-tour-step-button-next").on("click", this.context.next);
         footer.find(".guided-tour-step-button-close").on("click", this.context.stop);
         footer.find(".guided-tour-step-button-complete").on("click", this.context.complete);
         footer.find(".guided-tour-step-footer-bullets li").on("click", function (e) {
           return _this.context.go(parseInt(umbrella_min(e.target).data("index")));
         });
-        var highlight = this.highlight = umbrella_min("<div class=\"guided-tour-step-highlight\"></div>");
         highlight.on("click", this.context.action);
-        var tooltip = this.tooltip = umbrella_min("<div role=\"tooltip\" class=\"guided-tour-step-tooltip\"></div>");
-        var arrow = this.arrow = umbrella_min("<div aria-hidden=\"true\" class=\"guided-tour-arrow\"></div>");
         tooltip.append(arrow).append(_image).append(_title).append(content).append(footer);
-        this.container = umbrella_min("<div role=\"dialog\" class=\"guided-tour-step" + (this.first ? " guided-tour-step-first" : "") + (this.last ? " guided-tour-step-last" : "") + "\"></div>");
         this.container.append(highlight).append(tooltip);
       }
       return this.container;
@@ -366,6 +424,7 @@ var Step = function () {
     this.arrow = null;
     this.rect = {};
     this.image = null;
+    this.video = null;
     this.title = "";
     this.content = "";
     this.active = false;
@@ -591,6 +650,12 @@ var Tour = function () {
         "headers": {
           "Content-Type": "application/json"
         }
+      },
+      buttons: {
+        previous: true,
+        next: true,
+        close: true,
+        bullets: true
       },
       onStart: function onStart() {},
       onStop: function onStop() {},
