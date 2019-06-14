@@ -53,6 +53,12 @@ export default class Tour {
             "Content-Type": "application/json"
           }
         },
+        buttons: {
+          previous: true,
+          next: true,
+          close: true,
+          bullets: true
+        },
         onStart: () => { },
         onStop: () => { },
         onComplete: () => { },
