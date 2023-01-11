@@ -1,0 +1,120 @@
+{
+  "id": "eae11921-2ad6-42da-88a5-2e53c367a399",
+  "version": "2.0",
+  "name": "Test",
+  "url": "https://dev-uncloud.perfagents.com",
+  "tests": [{
+    "id": "a6e799ca-a2f3-4013-8c92-5e762e4d82cd",
+    "name": "Uncloud",
+    "commands": [{
+      "id": "5fa758ab-22d5-4c86-8ee5-4c247c23ebe7",
+      "comment": "",
+      "command": "open",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "39201b8f-1a99-4424-9fcf-eb7010556f61",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9243444f-7607-4af9-9dd8-d574bae211b4",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "833757fd-e2fe-4c90-9986-373d3eab90e9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-4:nth-child(1) .btn",
+      "targets": [
+        ["css=.col-4:nth-child(1) .btn", "css:finder"],
+        ["xpath=(//button[@type='button'])[5]", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/div/div[2]/div[2]/div/div/div/div/div/div[2]/div/div/button", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Create')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a64ca087-fa3f-4e86-9c69-8d2e7709938b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.primary-btn",
+      "targets": [
+        ["css=.primary-btn", "css:finder"],
+        ["xpath=(//button[@type='button'])[7]", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/div/div[2]/div[2]/div[2]/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Next')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "26787120-22b1-472d-b8f2-75fa86559c40",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.primary-btn",
+      "targets": [
+        ["css=.primary-btn", "css:finder"],
+        ["xpath=(//button[@type='button'])[7]", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/div/div[2]/div[2]/div[2]/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Next')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e013f886-7d48-4134-8fc0-d1d0e33ffc6b",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.primary-btn",
+      "targets": [
+        ["css=.primary-btn", "css:finder"],
+        ["xpath=(//button[@type='button'])[10]", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/div/div[2]/div[2]/div[2]/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Next')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9544167e-7f0b-449b-a7b3-cbe6631026a0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.primary-btn",
+      "targets": [
+        ["css=.primary-btn", "css:finder"],
+        ["xpath=(//button[@type='button'])[10]", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/div/div[2]/div[2]/div[2]/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Next')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "35f3bf72-eff4-445e-b0b6-f2a2dc3cd121",
+      "comment": "",
+      "command": "click",
+      "target": "css=.primary-btn",
+      "targets": [
+        ["css=.primary-btn", "css:finder"],
+        ["xpath=(//button[@type='button'])[9]", "xpath:attributes"],
+        ["xpath=//div[@id='app']/div/div/div[2]/div[2]/div[2]/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "fa0b255d-4601-436b-84f0-968ed5c82bbb",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["a6e799ca-a2f3-4013-8c92-5e762e4d82cd"]
+  }],
+  "urls": ["https://dev-platform.perfagents.com/", "https://dev-uncloud.perfagents.com/"],
+  "plugins": []
+}
